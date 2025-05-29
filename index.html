@@ -11,6 +11,41 @@
 
 <body>
 
+    <div class="background_custom">
+        <div class="svg_body_bg">
+            <div class="circle_lg">
+                <svg width="533" height="533" viewBox="0 0 533 533" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_f_44_1569)">
+                        <circle cx="266.5" cy="266.5" r="204.75" fill="#FEE193" fill-opacity="0.6" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_44_1569" x="0.780003" y="0.780003" width="531.44" height="531.44"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="30.485" result="effect1_foregroundBlur_44_1569" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="circle_sm">
+                <svg width="305" height="296" viewBox="0 0 305 296" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_f_44_1570)">
+                        <ellipse cx="152.5" cy="148" rx="99.9" ry="94.8" fill="#B8E0D8" fill-opacity="0.6" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_44_1570" x="0.339607" y="0.939949" width="304.32" height="294.12"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="26.13" result="effect1_foregroundBlur_44_1570" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+    </div>
 
     <nav>
         <div class="logo">
@@ -44,7 +79,7 @@
                             <a href="home.html" data-img="1.jpg">Home</a>
                         </div>
                         <div class="link">
-                            <a href="navbar_gsap_update.html" data-img="1.jpg">Cara Menggambar</a>
+                            <a href="navbar_gsap_update.html" data-img="wp5.jpg">Cara Menggambar</a>
                         </div>
                         <div class="link">
                             <a href="referensi.html" data-img="wp6.jpg">Referensi</a>
@@ -79,7 +114,7 @@
     </div>
 
     <!-- Splashscreen -->
-    <div class="splash_screen">
+    <!-- <div class="splash_screen">
         <div class="splash-content">
             <span>N</span>
             <span>A</span>
@@ -94,17 +129,20 @@
         <svg class="splash-svg" viewBox="0 0 1440 420" preserveAspectRatio="none" width="1440" height="420">
             <path id="curve" d="M0,0 Q820,820 1440,0 L1440,-280 L0,-280 Z" fill="#000" />
         </svg>
-    </div>
+    </div> -->
 
     <!-- Main Contant -->
     <div id="smooth-wrapper" class="container">
         <div id="smooth-content">
             <section id="home" class="hero">
-                <div class="hero-img">
+                <!-- <div class="hero-img">
                     <img src="https://a.storyblok.com/f/133769/1920x2716/5c24d6b467/exo-ape-hero-1.jpg/m/2400x3395/filters:quality(90)"
                         alt="">
+                </div> -->
+                <div class="box-title">
+                    <h1>Master the art of drawing <br> Manga step by step</h1>
+                    <span>マンガの描き方を基本から上達まで学ぼう</span>
                 </div>
-                <h1>Digital architecture that rises from the void </h1>
             </section>
             <section id="core" class="body-content">
                 <h1>Core</h1>
@@ -117,7 +155,6 @@
             </section>
         </div>
     </div>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/CustomEase.min.js"></script>
@@ -143,62 +180,97 @@
             });
 
             // Splashscreen Animation
-            window.addEventListener('load', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+            // window.addEventListener('load', () => {
+            //     window.scrollTo({
+            //         top: 0,
+            //         behavior: 'smooth'
+            //     });
 
-                const splashScreen = document.querySelector('.splash_screen');
-                const containers = document.querySelectorAll('.container');
-                const textSpans = document.querySelectorAll('.splash-content span');
+            //     const splashScreen = document.querySelector('.splash_screen');
+            //     const containers = document.querySelectorAll('.container');
+            //     const textSpans = document.querySelectorAll('.splash-content span');
 
-                document.body.style.overflowY = 'hidden';
-                document.documentElement.style.overflowY = 'hidden';
+            //     document.body.style.overflowY = 'hidden';
+            //     document.documentElement.style.overflowY = 'hidden';
 
-                document.body.style.overflowX = 'hidden';
-                document.documentElement.style.overflowX = 'hidden';
+            //     document.body.style.overflowX = 'hidden';
+            //     document.documentElement.style.overflowX = 'hidden';
 
-                // Create timeline for synchronized animation
-                let tl = gsap.timeline();
+            //     // Create timeline for synchronized animation
+            //     let tl = gsap.timeline();
 
-                tl.to(textSpans, {
-                    y: "0%",
-                    opacity: 1,
-                    delay: 0.4,
-                    duration: .7,
-                    stagger: 0.1,
-                    ease: "power3.out",
-                }).to(splashScreen, {
-                    duration: .7,
-                    y: '-100%',
-                    position: 'relative',
-                    opacity: 1,
-                    // delay: 1.0,
-                    ease: 'power2.inOut',
-                    stagger: 0,
-                    onComplete: () => {
-                        splashScreen.style.display = 'none';
-                        document.body.style.overflowY = 'auto';
-                        document.documentElement.style.overflowY = 'auto';
+            //     tl.to(textSpans, {
+            //         y: "0%",
+            //         opacity: 1,
+            //         delay: 0.4,
+            //         duration: .7,
+            //         stagger: 0.1,
+            //         ease: "power3.out",
+            //     }).to(splashScreen, {
+            //         duration: .7,
+            //         y: '-100%',
+            //         position: 'relative',
+            //         opacity: 1,
+            //         // delay: 1.0,
+            //         ease: 'power2.inOut',
+            //         stagger: 0,
+            //         onComplete: () => {
+            //             splashScreen.style.display = 'none';
+            //             document.body.style.overflowY = 'auto';
+            //             document.documentElement.style.overflowY = 'auto';
 
-                        document.body.style.overflowX = 'hidden';
-                        document.documentElement.style.overflowX = 'hidden';
+            //             document.body.style.overflowX = 'hidden';
+            //             document.documentElement.style.overflowX = 'hidden';
 
-                        // Reset container positions
-                        containers.forEach(container => {
-                            container.style.transform = 'none';
-                        });
-                    }
-                }).to("#curve", {
-                    duration: .6,
-                    ease: "power4.inOut",
-                    attr: {
-                        d: "M0,0 Q820,0 1440,0 L1440,-280 L0,-280 Z"
-                    }
-                }, "-=.5");
-            });
+            //             // Reset container positions
+            //             containers.forEach(container => {
+            //                 container.style.transform = 'none';
+            //             });
+            //         }
+            //     }).to("#curve", {
+            //         duration: .6,
+            //         ease: "power4.inOut",
+            //         attr: {
+            //             d: "M0,0 Q820,0 1440,0 L1440,-280 L0,-280 Z"
+            //         }
+            //     }, "-=.5");
+            // });
 
+            // Background Animation
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const movementRadius = 120;
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            function animateCircleRandom(selector, baseScale = 1, delay = 0) {
+                function move() {
+                    const x = randomInRange(-movementRadius, movementRadius);
+                    const y = randomInRange(-movementRadius, movementRadius);
+                    const scale = randomInRange(baseScale * 0.8, baseScale * 1.2);
+
+                    gsap.to(selector, {
+                        duration: 1.5,
+                        x,
+                        y,
+                        scale,
+                        ease: "sine.inOut",
+                        onComplete: move,
+                        delay
+                    });
+                }
+                move();
+            }
+
+            // Large circle random movement and scale
+            animateCircleRandom(".circle_lg", 0.5);
+
+            // Small circle random movement and scale
+            animateCircleRandom(".circle_sm", 1.0, 0.2); //
+
+            // 
             // Navigation Bar Animation
             ScrollTrigger.create({
                 trigger: "body",
@@ -294,17 +366,12 @@
                 const close = document.querySelector("#menu-close");
 
                 if (isOpening) {
-                    document.body.style.overflowY = 'hidden';
-                    document.documentElement.style.overflowY = 'hidden';
-
-                    document.body.style.overflowX = 'hidden';
-                    document.documentElement.style.overflowX = 'hidden';
-                } else {
-                    document.body.style.overflowY = 'auto';
-                    document.documentElement.style.overflowY = 'auto';
-
-                    document.body.style.overflowX = 'hidden';
-                    document.documentElement.style.overflowX = 'hidden';
+                    ScrollSmoother.get().paused(true);
+                    document.body.style.overflow = 'hidden';
+                }
+                else {
+                    ScrollSmoother.get().paused(false);
+                    document.body.style.overflow = '';
                 }
 
                 gsap.to(isOpening ? open : close, {
