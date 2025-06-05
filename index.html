@@ -10,8 +10,9 @@
 </head>
 
 <body>
-    <div class="particles"></div>
     <div class="background_custom">
+        <div class="particles"></div>
+
         <div class="svg_body_bg">
             <div class="circle_lg">
                 <!-- Fixed: Made viewBox square (797x797) to match width/height -->
@@ -117,7 +118,7 @@
     </div>
 
     <!-- Splashscreen -->
-    <!-- <div class="splash_screen">
+    <div class="splash_screen">
         <div class="splash-content">
             <span>N</span>
             <span>A</span>
@@ -130,9 +131,9 @@
             <span>S</span>
         </div>
         <svg class="splash-svg" viewBox="0 0 1440 420" preserveAspectRatio="none" width="1440" height="420">
-            <path id="curve" d="M0,0 Q820,820 1440,0 L1440,-280 L0,-280 Z" fill="#000" />
+            <path id="curve" d="M0,0 Q820,820 1440,0 L1440,-280 L0,-280 Z" fill="var(--color-primary)" />
         </svg>
-    </div> -->
+    </div>
 
     <!-- Main Contant -->
     <div id="smooth-wrapper" class="container">
@@ -538,61 +539,68 @@
                 });
 
                 // Splashscreen Animation
-                // window.addEventListener('load', () => {
-                //     window.scrollTo({
-                //         top: 0,
-                //         behavior: 'smooth'
-                //     });
+                window.addEventListener('load', async () => {
+                    const smoother = ScrollSmoother.get();
+                    if (smoother) {
+                        smoother.scrollTo(0, {
+                            duration: 1,
+                            ease: "power2.inOut"
+                        });
+                    }
 
-                //     const splashScreen = document.querySelector('.splash_screen');
-                //     const containers = document.querySelectorAll('.container');
-                //     const textSpans = document.querySelectorAll('.splash-content span');
+                    const splashScreen = document.querySelector('.splash_screen');
+                    const containers = document.querySelectorAll('.container');
+                    const textSpans = document.querySelectorAll('.splash-content span');
 
-                //     document.body.style.overflowY = 'hidden';
-                //     document.documentElement.style.overflowY = 'hidden';
+                    document.body.style.overflowY = 'hidden';
+                    document.documentElement.style.overflowY = 'hidden';
 
-                //     document.body.style.overflowX = 'hidden';
-                //     document.documentElement.style.overflowX = 'hidden';
+                    document.body.style.overflowX = 'hidden';
+                    document.documentElement.style.overflowX = 'hidden';
 
-                //     // Create timeline for synchronized animation
-                //     let tl = gsap.timeline();
+                    // Create timeline for synchronized animation
+                    let tl = gsap.timeline();
 
-                //     tl.to(textSpans, {
-                //         y: "0%",
-                //         opacity: 1,
-                //         delay: 0.4,
-                //         duration: .7,
-                //         stagger: 0.1,
-                //         ease: "power3.out",
-                //     }).to(splashScreen, {
-                //         duration: .7,
-                //         y: '-100%',
-                //         position: 'relative',
-                //         opacity: 1,
-                //         // delay: 1.0,
-                //         ease: 'power2.inOut',
-                //         stagger: 0,
-                //         onComplete: () => {
-                //             splashScreen.style.display = 'none';
-                //             document.body.style.overflowY = 'auto';
-                //             document.documentElement.style.overflowY = 'auto';
+                    tl.to(textSpans, {
+                        y: "0%",
+                        opacity: 1,
+                        delay: 0.4,
+                        duration: .7,
+                        stagger: 0.1,
+                        ease: "power3.out",
+                    }).to(splashScreen, {
+                        duration: .7,
+                        y: '-100%',
+                        position: 'relative',
+                        opacity: 1,
+                        // delay: 1.0,
+                        ease: 'power2.inOut',
+                        stagger: 0,
+                        onComplete: () => {
+                            splashScreen.style.display = 'none';
+                            document.body.style.overflowY = 'auto';
+                            document.documentElement.style.overflowY = 'auto';
 
-                //             document.body.style.overflowX = 'hidden';
-                //             document.documentElement.style.overflowX = 'hidden';
+                            document.body.style.overflowX = 'hidden';
+                            document.documentElement.style.overflowX = 'hidden';
 
-                //             // Reset container positions
-                //             containers.forEach(container => {
-                //                 container.style.transform = 'none';
-                //             });
-                //         }
-                //     }).to("#curve", {
-                //         duration: .6,
-                //         ease: "power4.inOut",
-                //         attr: {
-                //             d: "M0,0 Q820,0 1440,0 L1440,-280 L0,-280 Z"
-                //         }
-                //     }, "-=.5");
-                // });
+                            // Reset container positions
+                            containers.forEach(container => {
+                                container.style.transform = 'none';
+                            });
+                        }
+                    }).from(containers, {
+                        y: 300,
+                        duration: .3,
+                    }, "-=.5")
+                        .to("#curve", {
+                            duration: .6,
+                            ease: "power4.inOut",
+                            attr: {
+                                d: "M0,0 Q820,0 1440,0 L1440,-280 L0,-280 Z"
+                            }
+                        }, "-=.5");
+                });
 
                 // Background Animation
                 const movementRadius = 120;
