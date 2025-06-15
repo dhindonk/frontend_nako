@@ -7,9 +7,212 @@
     <title>NakoClass_Huda Sense</title>
 
     <link rel="stylesheet" href="style.css">
+    <style>
+        .body-content-small {
+            position: relative;
+            width: 100%;
+            height: max-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(100px);
+            background: var(--color-shadow);
+        }
+
+        .body-content-small.v2 {
+            padding-top: 150px;
+            background: var(--color-shadow) !important;
+        }
+
+        .body-content-small .section-title {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            color: var(--color-white);
+            font-family: var(--font-family-style);
+        }
+
+        .body-content-small .section-title h2 {
+            font-size: clamp(2rem, 3vw, 4rem);
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .body-content-small .section-title p {
+            font-size: clamp(1.2rem, 1.5vw, 2rem);
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .horizontal-scroll-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--color-shadow);
+            display: flex;
+            align-items: start;
+            flex-direction: column;
+        }
+
+        .horizontal-scroll-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: var(--color-shadow);
+        }
+
+        .cards-container {
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            width: max-content;
+            padding: 0 100px;
+            gap: 60px;
+        }
+
+        .tutorial-card {
+            flex-shrink: 0;
+            width: 340px;
+            /* width: 380px; */
+            height: 480px;
+            /* background: rgba(255, 255, 255, 0.95); */
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .6s ease;
+        }
+
+        .card-content {
+            position: absolute;
+            padding: 30px;
+            min-height: 50%;
+            height: max-content;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            display: flex;
+            backdrop-filter: blur(0);
+            background: linear-gradient(to top,
+                    var(--color-black-high) 20%,
+                    rgba(0, 0, 0, 0.85) 40%,
+                    rgba(0, 0, 0, 0.6) 60%,
+                    rgba(0, 0, 0, 0.3) 80%,
+                    rgba(0, 0, 0, 0) 100%);
+            transition: .5s;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-category {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--color-primary);
+            color: var(--color-black-high);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            width: fit-content;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-white);
+            margin: 0 0 12px 0;
+            line-height: 1.3;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: var(--color-light);
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+            flex-grow: 1;
+        }
+
+        .progress-indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .progress-dot.active {
+            width: 24px;
+            border-radius: 50px;
+            background: var(--color-primary);
+        }
+
+        .card-animate {
+            opacity: 0;
+            transform: translateX(100px) translateY(20px);
+            filter: blur(10px);
+        }
+
+        .drawing-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drawing-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            transition: left 0.8s ease;
+            z-index: 1;
+        }
+
+        .drawing-effect.animate::before {
+            left: 100%;
+        }
+    </style>
 </head>
 
 <body>
+
     <div class="background_custom">
         <div class="particles"></div>
 
@@ -105,7 +308,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="menu-footer">
+            <div class="menu-footer">
                 <div class="col-lg">
                     <a href="#">Testing</a>
                 </div>
@@ -113,7 +316,7 @@
                     <a href="#">Origin</a>
                     <a href="#">Join Signal</a>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 
@@ -130,8 +333,14 @@
             <span>S</span>
             <span>S</span>
         </div>
+        <div class="mask-text">
+            <p class="japanese-text" id="japaneseText">ナコクラス</p>
+        </div>
+        <div class="splash_progress_wrapper">
+            <div class="splash_progress_bar" id="splashProgressBar"></div>
+        </div>
         <svg class="splash-svg" viewBox="0 0 1440 420" preserveAspectRatio="none" width="1440" height="420">
-            <path id="curve" d="M0,0 Q820,820 1440,0 L1440,-280 L0,-280 Z" fill="var(--color-primary)" />
+            <path id="curve" d="M0,0 Q820,820 1440,0 L1440,-280 L0,-280 Z" fill="var(--color-shadow)" />
         </svg>
     </div>
 
@@ -139,14 +348,17 @@
     <div id="smooth-wrapper" class="container">
 
         <div id="smooth-content">
+
             <section id="home" class="hero">
-                <!-- <div class="hero-img">
-                    <img src="https://a.storyblok.com/f/133769/1920x2716/5c24d6b467/exo-ape-hero-1.jpg/m/2400x3395/filters:quality(90)"
-                        alt="">
-                </div> -->
                 <div class="box-title">
-                    <h1>Master the art of drawing <br> Manga step by step</h1>
-                    <span>マンガの描き方を基本から上達まで学ぼう</span>
+
+                    <div class="title-top">
+                        <h1 class="split-title">Master the art of drawing <br> Manga step by step</h1>
+                    </div>
+                    <div class="title-bottom" aria-hidden="true">
+                        マンガの描き方を基本から上達まで学ぼう
+                        <span class="underline"></span>
+                    </div>
                 </div>
             </section>
 
@@ -235,7 +447,6 @@
                         </div>
                     </div>
                 </div>
-
             </section>
 
             <!-- content 3 -->
@@ -323,140 +534,175 @@
                         </div>
                     </div>
                 </div>
-
             </section>
 
-            <!-- content 5 -->
-            <section class="body-content">
-                <div class="box_tutor" data-video="video_1.webm">
+            <div class="body-content-small">
+                <div class="section-title study-title">
+                    <div class="mask-text">
+                        <h2>Pelajaran Disesuaikan untuk Anda</h2>
+                    </div>
+                    <div class="mask-text">
+                        <p>Kumpulan hasil akhir proyek yang menampilkan detail, kualitas, dan kreativitas terbaik kami.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="box_text box_text_left">
-                        <div class="box_title">
-                            <span class="title">
-                                Dasar Dasar Menggambar Manga
-                            </span>
-                        </div>
-                        <div class="box_description">
-                            <span class="description">
-                                Mengenal alat dan teknik dasar dalam menggambar manga. Pelajari cara membuat garis yang
-                                tepat
-                                dan
-                                penggunaan pensil yang benar
-                            </span>
-                        </div>
-                        <div class="box_jpn">
-                            <span class="jpn">
-                                漫画の基本を学ぶ
-                            </span>
-                        </div>
-                    </div>
+            <!-- content horizontal scroll -->
+            <section class="horizontal-scroll-section">
+                <div class="horizontal-scroll-wrapper">
+                    <div class="cards-container">
+                        <a href="#">
+                            <div class="tutorial-card card-animate drawing-effect">
+                                <div class="card-img">
+                                    <img src="draw.png" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-category">Dasar</span>
+                                    <h3 class="card-title">Sketsa dan outline dasar dalam menggambar manga</h3>
+                                    <p class="card-description">Lorem ipsum text saja soalnya contoh, kita bisa ubah
+                                        nanti
+                                        untuk keperluan content yang lain.</p>
+                                </div>
+                            </div>
+                        </a>
 
-                    <div class="box_img">
-                        <div class="img_thum">
-                            <video muted autoplay playsinline loop>
-                                <source src="thumbnail.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="border_img">
-                            <img src="images/border_frame.svg" alt="">
-                        </div>
-                        <div class="play_btn">
-                        </div>
-                        <div class="loading-spinner" style="display: none;"></div>
+                        <a href="#">
+                            <div class="tutorial-card card-animate drawing-effect">
+                                <div class="card-img">
+                                    <img src="draw.png" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-category">Menengah</span>
+                                    <h3 class="card-title">Teknik pewarnaan dan shading professional</h3>
+                                    <p class="card-description">Pelajari teknik pewarnaan digital dan traditional yang
+                                        digunakan mangaka profesional.</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="tutorial-card card-animate drawing-effect">
+                                <div class="card-img">
+                                    <img src="draw.png" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-category">Lanjutan</span>
+                                    <h3 class="card-title">Komposisi panel dan storytelling</h3>
+                                    <p class="card-description">Menguasai seni bercerita melalui komposisi panel yang
+                                        dinamis dan menarik.</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="tutorial-card card-animate drawing-effect">
+                                <div class="card-img">
+                                    <img src="draw.png" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-category">Khusus</span>
+                                    <h3 class="card-title">Karakter design dan development</h3>
+                                    <p class="card-description">Ciptakan karakter yang memorable dengan personality dan
+                                        design yang kuat.</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="tutorial-card card-animate drawing-effect">
+                                <div class="card-img">
+                                    <img src="draw.png" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-category">Pro</span>
+                                    <h3 class="card-title">Digital workflow dan publishing</h3>
+                                    <p class="card-description">Pelajari workflow professional untuk digital manga dan
+                                        persiapan publishing.</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="char_img char_right">
-                        <img width="300" height="300" src="images/anime.png" alt="">
-                    </div>
+                </div>
+
+                <div class="progress-indicator">
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
                 </div>
             </section>
 
-            <!-- content 6 -->
-            <section class="body-content">
-                <div class="box_tutor" data-video="thumbnail.mp4">
-
-                    <div class="box_img">
-                        <div class="img_thum">
-                            <video muted autoplay playsinline loop>
-                                <source src="thumbnail.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="border_img">
-                            <img src="images/border_frame.svg" alt="">
-                        </div>
-                        <div class="play_btn">
-                        </div>
-                        <div class="loading-spinner" style="display: none;"></div>
+            <div class="body-content-small v2">
+                <div class="section-title gallery-title">
+                    <div class="mask-text">
+                        <h2>Gallery</h2>
                     </div>
-                    <div class="char_img">
-                        <img width="300" height="300" src="images/anime.png" alt="">
-                    </div>
-                    <div class="box_text">
-                        <div class="box_title">
-                            <span class="title">
-                                Dasar Dasar Menggambar Manga
-                            </span>
-                        </div>
-                        <div class="box_description">
-                            <span class="description">
-                                Mengenal alat dan teknik dasar dalam menggambar manga. Pelajari cara membuat garis yang
-                                tepat
-                                dan
-                                penggunaan pensil yang benar
-                            </span>
-                        </div>
-                        <div class="box_jpn">
-                            <span class="jpn">
-                                漫画の基本を学ぶ
-                            </span>
-                        </div>
+                    <div class="mask-text">
+                        <p>Kumpulan hasil akhir proyek yang menampilkan detail, kualitas, dan kreativitas terbaik kami.
+                        </p>
                     </div>
                 </div>
+            </div>
 
-            </section>
-
-            <!-- content 7 -->
-            <section class="body-content">
-                <div class="box_tutor" data-video="video_1.webm">
-
-                    <div class="box_text box_text_left">
-                        <div class="box_title">
-                            <span class="title">
-                                Dasar Dasar Menggambar Manga
-                            </span>
-                        </div>
-                        <div class="box_description">
-                            <span class="description">
-                                Mengenal alat dan teknik dasar dalam menggambar manga. Pelajari cara membuat garis yang
-                                tepat
-                                dan
-                                penggunaan pensil yang benar
-                            </span>
-                        </div>
-                        <div class="box_jpn">
-                            <span class="jpn">
-                                漫画の基本を学ぶ
-                            </span>
+            <!-- content gallery section -->
+            <div class="body-content gradient-gallery">
+                <section class="gallery-section" id="gallery-section">
+                    <div class="gallery-grid-box">
+                        <div class="gallery-grid-padding">
+                            <div id="gallery-grid-container"></div>
+                            <div class="nav-hint" id="navHint">
+                                Drag to explore • Scroll to navigate • Click to view
+                            </div>
                         </div>
                     </div>
-
-                    <div class="box_img">
-                        <div class="img_thum">
-                            <video muted autoplay playsinline loop>
-                                <source src="thumbnail.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="border_img">
-                            <img src="images/border_frame.svg" alt="">
-                        </div>
-                        <div class="play_btn">
-                        </div>
-                        <div class="loading-spinner" style="display: none;"></div>
-                    </div>
-                    <div class="char_img char_right">
-                        <img width="300" height="300" src="images/anime.png" alt="">
+                </section>
+                <div id="gallery-modal-overlay">
+                    <div id="gallery-modal-content">
+                        <img id="gallery-modal-image" src="" alt="Gallery Image">
                     </div>
                 </div>
-            </section>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-section">
+                        <h3><span class="mask-text">FOLLOW US</span></h3>
+                        <ul>
+                            <li><a href="#"><span class="link-text">Instagram</span></a></li>
+                            <li><a href="#"><span class="link-text">Discord</span></a></li>
+                            <li><a href="#"><span class="link-text">Facebook</span></a></li>
+                            <li><a href="#"><span class="link-text">Twitter</span></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3><span class="mask-text">NAVIGATION</span></h3>
+                        <ul>
+                            <li><a href="#"><span class="link-text">Home</span></a></li>
+                            <li><a href="#"><span class="link-text">Cara menggambar</span></a></li>
+                            <li><a href="#"><span class="link-text">Referensi</span></a></li>
+                            <li><a href="#"><span class="link-text">Toko</span></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nakoclass-section">
+                        <h1 class="nakoclass-title">
+                            <span class="mask-text">NakoClass</span>
+                        </h1>
+                        <p class="nakoclass-subtitle">
+                            <span class="mask-text">Platform pembelajaran manga terbaik</span><br>
+                            <span class="mask-text">di Indonesia</span>
+                        </p>
+                    </div>
+
+                    <div class="footer-bottom">
+                        <p><span class="bottom-text">Make with <span class="heart">❤</span> 2025</span></p>
+                    </div>
+                </div>
+            </footer>
 
             <section class="video-modal-overlay" id="videoModal">
                 <div class="video-modal-container" id="videoContainer">
@@ -498,9 +744,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollSmoother.min.js"
         integrity="sha512-t4hwZimhnCKT3YLAsEcAcRDkngVFfCcUIfNLIjklrIZAZKD+GfQMP7HbRcsVHxNS48WRBSywNU1uSM2zzLQt1Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"
+        integrity="sha512-dgqdovLK5r/NMiV5YfWA0xC94DKGrm+6q1OZpuWHm+uBGLTck6wu58WAX9lmy8wec6cVnsgxbPJ60DtmNFnfgg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/InertiaPlugin.min.js"
+        integrity="sha512-PEhxb+AivyFXL3zZnE/TwS4sgWRDZRF7aTGVGkiF7ej++sMKTtN+ZfrEo8lPxrfMIOws/1RkVc1Apua29ktRwg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"
+        integrity="sha512-wOeEC+9qERAzhliwBFPDb6t8TiFFxdxG8vhK/Ygs7TuC44bpg8pg/X2/U/u+0X4fK05wb9id1EIipnF02+CFQw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        gsap.registerPlugin(CustomEase, ScrollSmoother, ScrollTrigger);
+    <script>
+        gsap.registerPlugin(CustomEase, SplitText, ScrollSmoother, ScrollTrigger, Draggable, InertiaPlugin);
         CustomEase.create("fastSlow", "M0,0 C0.83,0 0.17,1 1,1");
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -517,18 +772,187 @@
                 new AnimatedVariant();
                 new AdvancedVideoPlayer();
                 new ScrollAnimationManager();
+                new HorizontalScrollSlider();
+                new GalleryImage();
             }
         }
 
-        // Core Script
+        class AssetPreloader {
+            constructor() {
+                this.assetUrls = [];
+                this.totalAssets = 0;
+                this.loadedAssets = 0;
+                this.onProgress = null;
+            }
+
+            _discoverAssets() {
+                const discoveredUrls = new Set();
+
+                // 1. Gambar dari <img> dan <source>
+                document.querySelectorAll('img[src], source[srcset]').forEach(el => {
+                    const src = el.src || el.srcset;
+                    if (src) discoveredUrls.add(src);
+                });
+
+                // 2. Gambar dari atribut data-img
+                document.querySelectorAll('[data-img]').forEach(el => discoveredUrls.add(el.dataset.img));
+
+                // 3. Video dari <video> dan <source>
+                document.querySelectorAll('video, video source').forEach(el => {
+                    if (el.src) discoveredUrls.add(el.src);
+                });
+
+                // 4. Video dari atribut data-video
+                document.querySelectorAll('[data-video]').forEach(el => discoveredUrls.add(el.dataset.video));
+
+                const manualAssets = [
+                    'images/border_frame.svg',
+                    'images/anime_1.webp',
+                    'images/anime_2.png',
+                    'images/anime_3.jpg',
+                    'images/anime_4.jpg',
+                    'images/anime_5.jpg',
+                ];
+                manualAssets.forEach(url => discoveredUrls.add(url));
+
+                this.assetUrls = Array.from(discoveredUrls);
+                this.totalAssets = this.assetUrls.length + 1;
+            }
+
+            _loadImage(src) {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.src = src;
+                    img.onload = () => resolve({ src, status: 'ok' });
+                    img.onerror = () => resolve({ src, status: 'error' });
+                });
+            }
+
+            _loadVideo(src) {
+                return new Promise((resolve) => {
+                    const video = document.createElement('video');
+                    video.src = src;
+                    video.oncanplaythrough = () => resolve({ src, status: 'ok' });
+                    video.onerror = () => resolve({ src, status: 'error' });
+                });
+            }
+
+            preload(onProgressCallback) {
+                this.onProgress = onProgressCallback;
+                this._discoverAssets();
+
+                const promises = [];
+
+                const fontPromise = document.fonts.ready.then(() => {
+                    this._updateProgress();
+                    return { src: 'fonts', status: 'ok' };
+                });
+                promises.push(fontPromise);
+
+                this.assetUrls.forEach(url => {
+                    let promise;
+                    if (/\.(jpg|jpeg|png|gif|svg|webp)$/i.test(url)) {
+                        promise = this._loadImage(url);
+                    } else if (/\.(mp4|webm|ogg)$/i.test(url)) {
+                        promise = this._loadVideo(url);
+                    }
+
+                    if (promise) {
+                        promises.push(promise.then(result => {
+                            this._updateProgress();
+                            return result;
+                        }));
+                    } else {
+                        this.totalAssets--;
+                    }
+                });
+
+                this._updateProgress();
+                return Promise.allSettled(promises);
+            }
+
+            _updateProgress() {
+                if (this.onProgress) {
+                    const percentage = this.totalAssets > 0 ? (this.loadedAssets / this.totalAssets) * 100 : 100;
+                    this.onProgress(percentage);
+                }
+                this.loadedAssets++;
+            }
+        }
+
+        //    SplashscreenManager
+        class SplashscreenManager {
+            constructor() {
+                this.splashScreen = document.querySelector('.splash_screen');
+                this.progressBar = document.getElementById('splashProgressBar');
+                this.textSpans = document.querySelectorAll('.splash-content span');
+                this.textJpn = document.getElementById('japaneseText');
+                this.curve = document.getElementById('curve');
+            }
+
+            show() {
+                return new Promise(resolve => {
+                    const tl = gsap.timeline({
+                        onComplete: resolve
+                    });
+
+                    tl.to(this.textSpans, {
+                        y: "0%",
+                        opacity: 1,
+                        delay: 0.4,
+                        duration: .8,
+                        stagger: 0.05,
+                        ease: "power3.out",
+                    }).to(this.textJpn, {
+                        y: "0%",
+                        opacity: 1,
+                        duration: .8,
+                        ease: "power3.out",
+                    }, "<");
+                });
+            }
+
+            updateProgress(percentage) {
+                if (this.progressBar) {
+                    this.progressBar.style.width = `${percentage}%`;
+                }
+            }
+
+            hide() {
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        if (this.splashScreen) {
+                            this.splashScreen.style.display = 'none';
+                        }
+                        document.body.style.overflow = 'auto';
+                        ScrollSmoother.get()?.paused(false);
+                    }
+                });
+
+                tl.to(this.splashScreen, {
+                    duration: 1,
+                    y: '-100%',
+                    ease: 'power2.inOut',
+                })
+                    .to(this.curve, {
+                        duration: .8,
+                        ease: "power4.inOut",
+                        attr: { d: "M0,0 Q820,0 1440,0 L1440,-280 L0,-280 Z" },
+                    }, "<0.2");
+
+                return tl;
+            }
+        }
+
+        // CoreScript
         class CoreScript {
             constructor() {
+                this.smoother = null;
                 this.init();
             }
 
-            init() {
-                // Smooth Scrolling
-                ScrollSmoother.create({
+            async init() {
+                this.smoother = ScrollSmoother.create({
                     wrapper: "#smooth-wrapper",
                     content: "#smooth-content",
                     smooth: 2.2,
@@ -538,69 +962,88 @@
                     ignoreMobileResize: true,
                 });
 
-                // Splashscreen Animation
-                window.addEventListener('load', async () => {
-                    const smoother = ScrollSmoother.get();
-                    if (smoother) {
-                        smoother.scrollTo(0, {
-                            duration: 1,
-                            ease: "power2.inOut"
-                        });
-                    }
+                gsap.set("#smooth-wrapper", { autoAlpha: 0 }); // autoAlpha = visibility:hidden & opacity:0
+                // =======================================================================
 
-                    const splashScreen = document.querySelector('.splash_screen');
-                    const containers = document.querySelectorAll('.container');
-                    const textSpans = document.querySelectorAll('.splash-content span');
+                this.smoother.paused(true);
+                document.body.style.overflow = 'hidden';
 
-                    document.body.style.overflowY = 'hidden';
-                    document.documentElement.style.overflowY = 'hidden';
+                const splashscreenManager = new SplashscreenManager();
+                const assetPreloader = new AssetPreloader();
 
-                    document.body.style.overflowX = 'hidden';
-                    document.documentElement.style.overflowX = 'hidden';
-
-                    // Create timeline for synchronized animation
-                    let tl = gsap.timeline();
-
-                    tl.to(textSpans, {
-                        y: "0%",
-                        opacity: 1,
-                        delay: 0.4,
-                        duration: .7,
-                        stagger: 0.1,
-                        ease: "power3.out",
-                    }).to(splashScreen, {
-                        duration: .7,
-                        y: '-100%',
-                        position: 'relative',
-                        opacity: 1,
-                        // delay: 1.0,
-                        ease: 'power2.inOut',
-                        stagger: 0,
-                        onComplete: () => {
-                            splashScreen.style.display = 'none';
-                            document.body.style.overflowY = 'auto';
-                            document.documentElement.style.overflowY = 'auto';
-
-                            document.body.style.overflowX = 'hidden';
-                            document.documentElement.style.overflowX = 'hidden';
-
-                            // Reset container positions
-                            containers.forEach(container => {
-                                container.style.transform = 'none';
-                            });
-                        }
-                    }).from(containers, {
-                        y: 300,
-                        duration: .3,
-                    }, "-=.5")
-                        .to("#curve", {
-                            duration: .6,
-                            ease: "power4.inOut",
-                            attr: {
-                                d: "M0,0 Q820,0 1440,0 L1440,-280 L0,-280 Z"
-                            }
-                        }, "-=.5");
+                const introAnimationPromise = splashscreenManager.show();
+                const assetsLoadedPromise = assetPreloader.preload((percentage) => {
+                    splashscreenManager.updateProgress(percentage);
+                    console.log(`Loading... ${Math.round(percentage)}%`);
                 });
+
+                console.log("Waiting for assets AND intro animation to complete...");
+
+                await Promise.all([introAnimationPromise, assetsLoadedPromise]);
+
+                console.log("Assets loaded and intro animation finished. Starting main transition.");
+                // =====================================================================
+
+                const masterTransition = gsap.timeline();
+
+                masterTransition.to("#smooth-wrapper", { autoAlpha: 1, duration: 0.5 });
+
+                masterTransition.add(splashscreenManager.hide(), "<") // 
+                    .add(this.startMainContentAnimations(), "<0.5");
+            }
+
+            startMainContentAnimations() {
+                const tl = gsap.timeline();
+
+                const navLogo = document.querySelector(".logo a");
+                const navLinks = document.querySelectorAll(".nav-links ul li");
+                const textElement = document.querySelector(".split-title");
+                const titleBottomElement = document.querySelector(".title-bottom");
+
+                const split = textElement ? SplitText.create(textElement, { type: "chars,words,lines" }) : null;
+                const splitDesc = titleBottomElement ? SplitText.create(titleBottomElement, { type: "words", aria: "hidden" }) : null;
+
+                tl.from(navLogo, { y: -30, opacity: 0, duration: 1 })
+                    .from(navLinks, { y: -30, opacity: 0, duration: 1, stagger: .1 }, "<");
+
+                if (split && split.words) {
+                    tl.from(split.words, {
+                        y: -100,
+                        opacity: 0,
+                        rotation: "random(-50, 50)",
+                        duration: 0.7,
+                        ease: "back",
+                        stagger: 0.1
+                    }, 0.2);
+                }
+                if (splitDesc && splitDesc.words) {
+                    tl.from(splitDesc.words, {
+                        opacity: 0,
+                        duration: 1,
+                        ease: "sine.out",
+                        stagger: 0.1,
+                    }, "-=0.5");
+                }
+                tl.fromTo(".underline", { width: '0%' }, {
+                    width: '70%',
+                    duration: 1.2,
+                    ease: "power2.inOut"
+                }, "<");
+
+                return tl;
+            }
+
+            getSmoother() {
+                return this.smoother;
+            }
+        }
+
+        // Animated Variant
+        class AnimatedVariant {
+            constructor() {
+                this.initAnimations();
+            }
+            initAnimations() {
 
                 // Background Animation
                 const movementRadius = 120;
@@ -634,16 +1077,7 @@
 
                 // Small circle animation with delay
                 animateCircle(".circle_sm", 0.5, 0.2);
-            }
 
-        }
-
-        // Animated Variant
-        class AnimatedVariant {
-            constructor() {
-                this.initAnimations();
-            }
-            initAnimations() {
                 // Navigation Bar Animation
                 ScrollTrigger.create({
                     trigger: "body",
@@ -1138,7 +1572,7 @@
                     this.isOpen = true;
 
                     // Show and animate modal
-                    this.modal.classList.add('active');                    // Use GSAP for smooth animation with proper timing
+                    this.modal.classList.add('active');
                     gsap.fromTo(this.container,
                         {
                             scale: 0.8,
@@ -1189,7 +1623,7 @@
                         // Remove scroll lock classes and padding
                         document.documentElement.classList.remove('modal-open');
                         document.body.classList.remove('modal-open');
-                        document.body.style.paddingRight = '';                        // Restore ScrollSmoother state and position
+                        document.body.style.paddingRight = '';
                         if (smoother) {
                             smoother.paused(false);
                             requestAnimationFrame(() => {
@@ -1278,6 +1712,8 @@
         class ScrollAnimationManager {
             constructor() {
                 this.initScrollAnimations();
+                this.initFooterAnimations();
+                this.initHeaderScrollAnimations();
             }
 
             initScrollAnimations() {
@@ -1353,9 +1789,11 @@
                         }, 0.6);
                     }
 
+
                     ScrollTrigger.create({
                         trigger: tutorBox,
-                        start: "top 90%",
+                        start: "top 99%",
+                        // markers: true,
                         onEnter: () => {
                             mainTimeline.play();
                             textTimeline.play();
@@ -1363,8 +1801,771 @@
                     });
                 });
             }
+
+            initHeaderScrollAnimations() {
+                const studyTm = gsap.timeline({ paused: true });
+                const galleryTm = gsap.timeline({ paused: true });
+
+                studyTm.fromTo(['.study-title .mask-text h2', '.study-title .mask-text p'], {
+                    y: '100%',
+                    opacity: 0
+                }, {
+                    y: '0%',
+                    opacity: 1,
+                    duration: .6,
+                    ease: "power2.out"
+                }, 0.2);
+
+                galleryTm.fromTo(['.gallery-title .mask-text h2', '.gallery-title .mask-text p'], {
+                    y: '100%',
+                    opacity: 0
+                }, {
+                    y: '0%',
+                    opacity: 1,
+                    duration: .6,
+                    ease: "power2.out"
+                }, 0.2);
+
+                ScrollTrigger.create({
+                    trigger: '.study-title',
+                    // markers: true,
+                    start: "top 80%",
+                    onEnter: () => {
+                        studyTm.play();
+                    }
+                });
+
+                ScrollTrigger.create({
+                    trigger: '.gallery-title',
+                    // markers: true,
+                    start: "top 80%",
+                    onEnter: () => {
+                        galleryTm.play();
+                    }
+                });
+
+            }
+
+
+            initFooterAnimations() {
+                const footerTimeline = gsap.timeline({ paused: true });
+
+                footerTimeline.to('.footer-section', {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    stagger: 0.1,
+                    ease: "power2.out"
+                });
+
+                footerTimeline.to('.mask-text', {
+                    y: 0,
+                    duration: 0.7,
+                    stagger: 0.1,
+                    ease: "power3.out"
+                }, 0.3);
+
+                footerTimeline.to('.link-text', {
+                    y: 0,
+                    duration: 0.7,
+                    stagger: 0.08,
+                    ease: "power3.out"
+                }, 0.6);
+
+                footerTimeline.to('.footer-section ul li', {
+                    opacity: 1,
+                    duration: 0.4,
+                    stagger: 0.08,
+                    ease: "power2.out"
+                }, 0.6);
+
+                footerTimeline.to('.nakoclass-section', {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out"
+                }, 0.4);
+
+                footerTimeline.to('.bottom-text', {
+                    y: 0,
+                    duration: 0.4,
+                    ease: "power3.out"
+                }, 1);
+
+                footerTimeline.to('.footer-bottom', {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    ease: "power2.out"
+                }, 1);
+
+                ScrollTrigger.create({
+                    trigger: '.footer',
+                    start: "top 80%",
+                    onEnter: () => {
+                        footerTimeline.play();
+                    }
+                });
+
+                document.querySelectorAll('.footer-section ul li a').forEach(link => {
+                    link.addEventListener('mouseenter', () => {
+                        gsap.to(link, {
+                            x: 3,
+                            duration: 0.05,
+                            ease: "power1.out"
+                        });
+                    });
+
+                    link.addEventListener('mouseleave', () => {
+                        gsap.to(link, {
+                            x: 0,
+                            duration: 0.05,
+                            ease: "power2.out"
+                        });
+                    });
+                });
+            }
+
         }
 
+        // Horizontal Scroll Slider
+        class HorizontalScrollSlider {
+            constructor() {
+                this.section = document.querySelector('.horizontal-scroll-section');
+                this.cardsContainer = document.querySelector('.cards-container');
+                this.cards = document.querySelectorAll('.tutorial-card');
+                this.progressDots = document.querySelectorAll('.progress-dot');
+                this.currentIndex = 0;
+
+                this.init();
+            }
+
+            init() {
+                this.setupHorizontalScroll();
+                this.setupCardAnimations();
+                this.setupProgressIndicator();
+                this.setupDrawingEffect();
+            }
+
+            setupHorizontalScroll() {
+                if (this.cardsContainer && this.cards.length > 0) {
+                    const totalWidth = this.cardsContainer.scrollWidth;
+                    const viewportWidth = window.innerWidth;
+                    const scrollDistance = totalWidth - viewportWidth;
+
+                    gsap.to(this.cardsContainer, {
+                        x: -scrollDistance,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: this.section,
+                            start: "top top",
+                            end: () => `+=${scrollDistance}`,
+                            scrub: 1,
+                            pin: true,
+                            anticipatePin: 1,
+                            onUpdate: (self) => {
+                                this.updateProgressIndicator(self.progress);
+                            }
+                        }
+                    });
+                }
+            }
+
+            setupCardAnimations() {
+                this.cards.forEach((card, index) => {
+                    gsap.set(card, {
+                        opacity: 0,
+                        x: 100,
+                        y: 50,
+                        filter: "blur(10px)",
+                        scale: 0.9
+                    });
+
+                    gsap.to(card, {
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
+                        filter: "blur(0px)",
+                        scale: 1,
+                        duration: 1.2,
+                        delay: index * 0.15,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: this.section,
+                            start: "top 80%",
+                            toggleActions: "play none none"
+                        }
+                    });
+
+                    const cardContent = card.querySelector('.card-content');
+                    const cardImg = card.querySelector('.card-img img');
+
+                    const heightCardContent = cardContent.scrollHeight;
+
+                    card.addEventListener('mouseenter', () => {
+                        gsap.to(cardContent, {
+                            height: (heightCardContent + 50) + 'px',
+                            duration: 0.1,
+                            ease: "bounce.in"
+                        });
+
+                        gsap.to(cardImg, {
+                            scale: 1.2,
+                            duration: 0.3,
+                            ease: "power2.out"
+                        });
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        gsap.to(cardContent, {
+                            height: heightCardContent,
+                            duration: 0.2,
+                            ease: "bounce.out"
+                        });
+
+                        gsap.to(cardImg, {
+                            scale: 1,
+                            duration: 0.3,
+                            ease: "power2.out"
+                        });
+                    });
+                });
+            }
+
+            setupDrawingEffect() {
+                this.cards.forEach((card, index) => {
+                    const drawingElement = card.querySelector('.drawing-effect');
+
+                    ScrollTrigger.create({
+                        trigger: card,
+                        start: "left 80%",
+                        onEnter: () => {
+                            setTimeout(() => {
+                                drawingElement?.classList.add('animate');
+                            }, index * 200);
+                        }
+                    });
+                });
+            }
+
+            setupProgressIndicator() {
+                this.progressDots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        this.goToCard(index);
+                    });
+                });
+            }
+
+            updateProgressIndicator(progress) {
+                const totalCards = this.cards.length;
+                const currentCardIndex = Math.floor(progress * totalCards);
+
+                this.progressDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentCardIndex);
+                });
+            }
+
+            goToCard(index) {
+                if (index >= 0 && index < this.cards.length) {
+                    const cardWidth = this.cards[0].offsetWidth + 60;
+                    const targetX = -cardWidth * index;
+
+                    gsap.to(this.cardsContainer, {
+                        x: targetX,
+                        duration: 1,
+                        ease: "power2.inOut"
+                    });
+
+                    this.currentIndex = index;
+                    this.updateProgressIndicator(index / (this.cards.length - 1));
+                }
+            }
+        }
+
+        class GalleryImage {
+            constructor() {
+                this.grid = document.getElementById('gallery-grid-container');
+                this.modalOverlay = document.getElementById('gallery-modal-overlay');
+                this.modalContent = document.getElementById('gallery-modal-content');
+                this.modalImage = document.getElementById('gallery-modal-image');
+                this.gallerySection = document.getElementById('gallery-section');
+                this.dragProxy = document.querySelector('.gallery-grid-padding');
+                // this.cursor = document.getElementById('gallery-cursor');
+                // this.arrow1 = document.getElementById('gallery-arrow1');
+                // this.arrow2 = document.getElementById('gallery-arrow2');
+                this.navHint = document.getElementById('navHint');
+
+                // Gallery configuration
+                this.CARD_WIDTH_VW = 20;
+                this.CARD_HEIGHT_VH = 47;
+                this.RENDER_RADIUS = 2000;
+                this.CULL_RADIUS = 2400;
+                this.GAP = 80;
+                this.STAGGER_OFFSET = 0.4;
+
+                this.imageList = [
+                    'images/anime_1.webp',
+                    'images/anime_2.png',
+                    'images/anime_3.jpg',
+                    'images/anime_4.jpg',
+                    'images/anime_5.jpg',
+                ];
+
+                this.occupied = new Map();
+                this.recyclePool = [];
+                this.cardWidthPx = window.innerWidth * (this.CARD_WIDTH_VW / 100);
+                this.cardHeightPx = window.innerHeight * (this.CARD_HEIGHT_VH / 100);
+                this.draggableInstance = null;
+
+                // Position tracking
+                this.currentGridX = 0;
+                this.currentGridY = 0;
+                this.targetGridX = 0;
+                this.targetGridY = 0;
+                this.isDragging = false;
+                this.isInertiaActive = false;
+                this.smoothFactor = 0.15;
+                this.isGalleryActive = false;
+                this.animationFrameId = null;
+
+                // Auto-scroll properties
+                this.isAutoScrolling = false;
+                this.autoScrollSpeed = .8;
+                this.scrollDirection = {
+                    x: (Math.random() - 0.5) * 2,
+                    y: (Math.random() - 0.5) * 2
+                };
+                this.autoScrollFrameId = null;
+                this.directionChangeTimer = 0;
+                this.directionChangeInterval = 300; // frames between direction changes
+
+                // Cursor state
+                this.mouseX = 0;
+                this.mouseY = 0;
+                this.prevMouseX = 0;
+                this.prevMouseY = 0;
+                this.currentAngle = 0;
+                this.targetAngle = 0;
+
+                console.log("GalleryImage class instantiated.");
+                this.init();
+            }
+
+            init() {
+                this.setupScrollTrigger();
+                this.setupDraggable();
+                this.setupModal();
+                this.setupResize();
+            }
+
+            setupScrollTrigger() {
+                const baseWidth = 900; // lebar awal dalam px
+                const maxWidth = 1400;
+
+                gsap.set(this.dragProxy, {
+                    y: 200,
+                    rotation: 5,
+                    transformOrigin: 'center center',
+                });
+
+                ScrollTrigger.create({
+                    trigger: this.gallerySection,
+                    start: "start 70%",
+                    end: "bottom center",
+                    // markers: true,
+                    onEnter: () => {
+                        this.activateGallery();
+                        this.dragProxy.classList.add('active');
+                        this.hideHintAfterDelay();
+                    },
+                    onLeave: () => {
+                        this.deactivateGallery();
+                    },
+                    onEnterBack: () => {
+                        this.activateGallery();
+                        this.dragProxy.classList.add('active');
+                    },
+                    onLeaveBack: () => {
+                        this.deactivateGallery();
+                    },
+                    onUpdate: (self) => {
+                        gsap.to(this.dragProxy, {
+                            y: 0,
+                            rotation: 0,
+                            duration: .1,
+                            ease: "power2.out"
+                        });
+                    },
+                });
+            }
+
+            activateGallery() {
+                if (this.isGalleryActive) return;
+                console.log("Activating gallery");
+                this.isGalleryActive = true;
+                this.gallerySection.classList.add('gallery-active');
+                if (this.draggableInstance) this.draggableInstance[0].enable();
+                this.updateGrid();
+                this.startSmoothUpdate();
+                this.startAutoScroll(); // Start auto-scroll when gallery is active
+            }
+
+            deactivateGallery() {
+                if (!this.isGalleryActive) return;
+                console.log("Deactivating gallery");
+                this.isGalleryActive = false;
+                this.gallerySection.classList.remove('gallery-active');
+                if (this.draggableInstance) this.draggableInstance[0].disable();
+                this.stopSmoothUpdate();
+                this.stopAutoScroll(); // Stop auto-scroll when gallery is inactive
+            }
+
+            startAutoScroll() {
+                if (this.autoScrollFrameId) return;
+                console.log("Starting auto-scroll");
+
+                const autoScroll = () => {
+                    if (this.isGalleryActive && this.isAutoScrolling && !this.isDragging && !this.isInertiaActive) {
+                        // Update position based on scroll direction and speed
+                        this.targetGridX += this.scrollDirection.x * this.autoScrollSpeed;
+                        this.targetGridY += this.scrollDirection.y * this.autoScrollSpeed;
+
+                        // Smoothly interpolate to target position
+                        this.currentGridX += (this.targetGridX - this.currentGridX) * this.smoothFactor;
+                        this.currentGridY += (this.targetGridY - this.currentGridY) * this.smoothFactor;
+
+                        // Apply position to grid
+                        gsap.set(this.grid, {
+                            x: this.currentGridX,
+                            y: this.currentGridY
+                        });
+
+                        // Update draggable position to match
+                        if (this.draggableInstance) {
+                            this.draggableInstance[0].x = this.currentGridX;
+                            this.draggableInstance[0].y = this.currentGridY;
+                        }
+
+                        // Update grid cards
+                        this.updateGrid();
+
+                        // Change direction occasionally
+                        this.directionChangeTimer++;
+                        if (this.directionChangeTimer >= this.directionChangeInterval) {
+                            if (Math.random() < 0.3) { // 30% chance to change direction
+                                this.scrollDirection.x = (Math.random() - 0.5) * 2;
+                                this.scrollDirection.y = (Math.random() - 0.5) * 2;
+                                console.log("Changed auto-scroll direction:", this.scrollDirection);
+                            }
+                            this.directionChangeTimer = 0;
+                        }
+                    }
+
+                    if (this.isGalleryActive) {
+                        this.autoScrollFrameId = requestAnimationFrame(autoScroll);
+                    }
+                };
+
+                // Start auto-scroll after initial delay
+                setTimeout(() => {
+                    this.isAutoScrolling = true;
+                    console.log("Auto-scroll activated");
+                    this.autoScrollFrameId = requestAnimationFrame(autoScroll);
+                }, 1000);
+            }
+
+            stopAutoScroll() {
+                console.log("Stopping auto-scroll");
+                this.isAutoScrolling = false;
+                if (this.autoScrollFrameId) {
+                    cancelAnimationFrame(this.autoScrollFrameId);
+                    this.autoScrollFrameId = null;
+                }
+            }
+
+            hideHint() {
+                this.navHint.classList.add('hidden');
+            }
+
+            hideHintAfterDelay() {
+                setTimeout(() => {
+                    this.hideHint();
+                }, 15000);
+            }
+
+            generateCard(x, y) {
+                const key = `${x}:${y}`;
+                let cardEl;
+
+                if (this.recyclePool.length > 0) {
+                    cardEl = this.recyclePool.pop();
+                } else {
+                    cardEl = document.createElement('div');
+                    cardEl.className = 'card-gallery';
+                    const imgEl = document.createElement('img');
+                    // const coordsEl = document.createElement('div');
+                    // coordsEl.className = 'card-coords';
+                    cardEl.appendChild(imgEl);
+                    // cardEl.appendChild(coordsEl);
+                }
+
+                const imgIndex = Math.abs(x * 13 + y * 31) % this.imageList.length;
+                cardEl.querySelector('img').src = this.imageList[imgIndex];
+                // cardEl.querySelector('.card-coords').textContent = `(${x}, ${y})`;
+
+                const yOffset = (Math.abs(x) % 2 === 1) ? this.cardHeightPx * this.STAGGER_OFFSET : 0;
+                this.grid.appendChild(cardEl);
+
+                gsap.fromTo(cardEl, {
+                    opacity: 0,
+                    scale: 0.95,
+                    x: x * (this.cardWidthPx + this.GAP),
+                    y: y * (this.cardHeightPx + this.GAP) + yOffset,
+                    width: this.cardWidthPx,
+                    height: this.cardHeightPx
+                }, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: 'power2.out',
+                    delay: Math.random() * 0.2
+                });
+
+                const cardData = { element: cardEl, x, y, yOffset };
+                this.occupied.set(key, cardData);
+                return cardData;
+            }
+
+            updateGrid() {
+                if (!this.isGalleryActive) return;
+
+                const gridBounds = this.grid.getBoundingClientRect();
+                const viewportCenterX = -gridBounds.x + window.innerWidth / 2;
+                const viewportCenterY = -gridBounds.y + window.innerHeight / 2;
+
+                const startX = Math.floor((viewportCenterX - this.RENDER_RADIUS) / (this.cardWidthPx + this.GAP));
+                const endX = Math.ceil((viewportCenterX + this.RENDER_RADIUS) / (this.cardWidthPx + this.GAP));
+                const startY = Math.floor((viewportCenterY - this.RENDER_RADIUS) / (this.cardHeightPx + this.GAP));
+                const endY = Math.ceil((viewportCenterY + this.RENDER_RADIUS) / (this.cardHeightPx + this.GAP));
+
+                this.occupied.forEach((cardData, key) => {
+                    const cardCenterX = cardData.x * (this.cardWidthPx + this.GAP) + this.cardWidthPx / 2;
+                    const cardCenterY = cardData.y * (this.cardHeightPx + this.GAP) + cardData.yOffset + this.cardHeightPx / 2;
+                    const distance = Math.hypot(cardCenterX - viewportCenterX, cardCenterY - viewportCenterY);
+
+                    if (distance > this.CULL_RADIUS) {
+                        const el = cardData.element;
+                        this.occupied.delete(key);
+                        gsap.to(el, {
+                            opacity: 0,
+                            scale: 0.95,
+                            duration: 0.4,
+                            ease: 'power2.in',
+                            onComplete: () => {
+                                if (this.grid.contains(el)) {
+                                    this.grid.removeChild(el);
+                                    this.recyclePool.push(el);
+                                }
+                            }
+                        });
+                    }
+                });
+
+                for (let x = startX; x <= endX; x++) {
+                    for (let y = startY; y <= endY; y++) {
+                        const key = `${x}:${y}`;
+                        if (this.occupied.has(key)) continue;
+
+                        const yOffset = (Math.abs(x) % 2 === 1) ? this.cardHeightPx * this.STAGGER_OFFSET : 0;
+                        const cardCenterX = x * (this.cardWidthPx + this.GAP) + this.cardWidthPx / 2;
+                        const cardCenterY = y * (this.cardHeightPx + this.GAP) + yOffset + this.cardHeightPx / 2;
+                        const distance = Math.hypot(cardCenterX - viewportCenterX, cardCenterY - viewportCenterY);
+
+                        if (distance < this.RENDER_RADIUS) {
+                            this.generateCard(x, y);
+                        }
+                    }
+                }
+            }
+
+            setupDraggable() {
+                console.log("Setting up Draggable");
+                this.draggableInstance = Draggable.create(this.grid, {
+                    type: "x,y",
+                    trigger: this.dragProxy,
+                    edgeResistance: 0.05,
+                    inertia: true,
+                    onPress: () => {
+                        console.log("Draggable: onPress");
+                        const smoother = ScrollSmoother.get();
+                        if (smoother) smoother.paused(true);
+                        this.isDragging = true;
+                        this.isInertiaActive = false;
+                        this.isAutoScrolling = false; // Stop auto-scroll when dragging
+                        this.targetGridX = this.draggableInstance[0].x;
+                        this.targetGridY = this.draggableInstance[0].y;
+                    },
+                    onDrag: () => {
+                        this.targetGridX = this.draggableInstance[0].x;
+                        this.targetGridY = this.draggableInstance[0].y;
+                        this.hideHint();
+                    },
+                    onDragEnd: () => {
+                        console.log("Draggable: onDragEnd");
+                        this.isDragging = false;
+                        if (!this.draggableInstance[0].isThrowing) {
+                            const smoother = ScrollSmoother.get();
+                            if (smoother) smoother.paused(false);
+                            // Resume auto-scroll after a delay when not throwing
+                            setTimeout(() => {
+                                if (!this.isDragging && !this.isInertiaActive) {
+                                    this.isAutoScrolling = true;
+                                }
+                            }, 3000);
+                        } else {
+                            this.isInertiaActive = true;
+                        }
+                    },
+                    onThrowUpdate: () => {
+                        this.targetGridX = this.draggableInstance[0].x;
+                        this.targetGridY = this.draggableInstance[0].y;
+                        this.updateGrid();
+                    },
+                    onThrowComplete: () => {
+                        console.log("Draggable: onThrowComplete");
+                        this.isInertiaActive = false;
+                        const smoother = ScrollSmoother.get();
+                        if (smoother) smoother.paused(false);
+                        // Resume auto-scroll after throw is complete
+                        setTimeout(() => {
+                            if (!this.isDragging && !this.isInertiaActive) {
+                                this.isAutoScrolling = true;
+                            }
+                        }, 3000);
+                    },
+                    onClick: (e) => {
+                        console.log("Draggable: onClick");
+                        if (!this.draggableInstance[0].isDragging) {
+                            const card = e.target.closest('.card-gallery');
+                            if (card) {
+                                const imgSrc = card.querySelector('img').src;
+                                this.showModal(imgSrc);
+                            }
+                        }
+                    }
+                });
+                this.draggableInstance[0].disable();
+            }
+
+            startSmoothUpdate() {
+                if (this.animationFrameId) return;
+                console.log("Starting smooth update loop");
+                const update = () => {
+                    if (this.isDragging) {
+                        this.currentGridX += (this.targetGridX - this.currentGridX) * this.smoothFactor;
+                        this.currentGridY += (this.targetGridY - this.currentGridY) * this.smoothFactor;
+                        gsap.set(this.grid, { x: this.currentGridX, y: this.currentGridY });
+                        this.draggableInstance[0].x = this.currentGridX;
+                        this.draggableInstance[0].y = this.currentGridY;
+                    } else if (this.isInertiaActive) {
+                        this.currentGridX = this.draggableInstance[0].x;
+                        this.currentGridY = this.draggableInstance[0].y;
+                    }
+
+                    // Only update grid if not auto-scrolling (to prevent conflicts)
+                    if (!this.isAutoScrolling) {
+                        this.updateGrid();
+                    }
+
+                    if (this.isGalleryActive) {
+                        this.animationFrameId = requestAnimationFrame(update);
+                    }
+                };
+                this.animationFrameId = requestAnimationFrame(update);
+            }
+
+            stopSmoothUpdate() {
+                console.log("Stopping smooth update loop");
+                if (this.animationFrameId) {
+                    cancelAnimationFrame(this.animationFrameId);
+                    this.animationFrameId = null;
+                }
+            }
+
+            setupModal() {
+                this.modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === this.modalOverlay) {
+                        this.hideModal();
+                    }
+                });
+            }
+
+            showModal(imageUrl) {
+                console.log("Showing modal");
+                if (this.draggableInstance) this.draggableInstance[0].disable();
+                this.isAutoScrolling = false; // Stop auto-scroll when modal is open
+
+                const smoother = ScrollSmoother.get();
+                if (smoother) smoother.paused(true);
+
+                this.modalImage.src = imageUrl;
+                document.body.classList.add('modal-open');
+                this.modalOverlay.classList.add('active');
+
+                const viewportY = smoother ? smoother.scrollTop() : window.scrollY;
+                gsap.set(this.modalContent, { y: viewportY + (window.innerHeight / 2) });
+                gsap.fromTo(this.modalContent,
+                    { scale: 0.8, opacity: 0 },
+                    { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }
+                );
+            }
+
+            hideModal() {
+                console.log("Hiding modal");
+                gsap.to(this.modalContent, {
+                    scale: 0.8,
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        document.body.classList.remove('modal-open');
+                        this.modalOverlay.classList.remove('active');
+                        if (this.isGalleryActive && this.draggableInstance) {
+                            this.draggableInstance[0].enable();
+                        }
+                        const smoother = ScrollSmoother.get();
+                        if (smoother) smoother.paused(false);
+
+                        // Resume auto-scroll after modal is closed
+                        setTimeout(() => {
+                            if (this.isGalleryActive && !this.isDragging && !this.isInertiaActive) {
+                                this.isAutoScrolling = true;
+                            }
+                        }, 1000);
+                    }
+                });
+            }
+
+            setupResize() {
+                window.addEventListener('resize', () => {
+                    this.cardWidthPx = window.innerWidth * (this.CARD_WIDTH_VW / 100);
+                    this.cardHeightPx = window.innerHeight * (this.CARD_HEIGHT_VH / 100);
+
+                    this.occupied.forEach(cardData => {
+                        const yOffset = (Math.abs(cardData.x) % 2 === 1) ? this.cardHeightPx * this.STAGGER_OFFSET : 0;
+                        cardData.yOffset = yOffset;
+                        gsap.set(cardData.element, {
+                            x: cardData.x * (this.cardWidthPx + this.GAP),
+                            y: cardData.y * (this.cardHeightPx + this.GAP) + yOffset,
+                            width: this.cardWidthPx,
+                            height: this.cardHeightPx
+                        });
+                    });
+
+                    this.updateGrid();
+                });
+            }
+        }
     </script>
 </body>
 
